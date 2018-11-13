@@ -123,6 +123,7 @@ public static int search (Object[] a, Object searchValue){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        txtoutput.setText("");
         int id = Integer.parseInt(txtid.getText());
         ISSStudent temp = new ISSStudent(null, null, id);
         int result = search(iss,temp);
