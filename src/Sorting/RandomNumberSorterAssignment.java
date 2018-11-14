@@ -1,7 +1,5 @@
 package Sorting;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import javax.swing.DefaultListModel;
 
 public class RandomNumberSorterAssignment extends javax.swing.JFrame {
@@ -14,9 +12,9 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         numbers = new DefaultListModel();
         //connect to list
         txtoutput.setModel(numbers);
-        for (int i = 0; i < 50000; i++) {
-            nums[i] = RNG();
-        }
+        //for (int i = 0; i < 50000; i++) { //if you want the generate button to be more of a "SHOW" button
+        //    nums[i] = RNG();
+        //}
     }
 
     @SuppressWarnings("unchecked")
@@ -62,6 +60,11 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         });
 
         btnquick.setText("Quick Sort");
+        btnquick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquickActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(txtoutput);
 
@@ -107,15 +110,21 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         /*System.out.println(nums[1]);
         System.out.println(nums[2]);
         System.out.println(nums[3]);*/
-
+        numbers.clear();
         for (int i = 0; i < 50000; i++) {
+            nums[i] = RNG(); //Allows pressing of generate button to generate new numbers
             numbers.addElement(nums[i]);
         }
 
     }//GEN-LAST:event_btngenerateActionPerformed
 
     private void btnbubbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbubbleActionPerformed
-        
+        numbers.clear();
+        bubbleSort(nums);
+        //re-display in list
+        for (int s : nums) {
+            numbers.addElement(s);
+        }
     }//GEN-LAST:event_btnbubbleActionPerformed
 
     private void btnexchangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexchangeActionPerformed
@@ -128,8 +137,25 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
     }//GEN-LAST:event_btnexchangeActionPerformed
 
     private void btninsertionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninsertionActionPerformed
-
+        numbers.clear();
+        insertionSort(nums);
+        //re-display in list
+        for (int s : nums) {
+            numbers.addElement(s);
+        }
     }//GEN-LAST:event_btninsertionActionPerformed
+
+    private void btnquickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquickActionPerformed
+        numbers.clear();
+        numbers.addElement("This button does nothing. Yet.");
+        /*
+        recursiveSort(nums);
+        //re-display in list
+        for (int s : nums) {
+            numbers.addElement(s);
+        }
+        */
+    }//GEN-LAST:event_btnquickActionPerformed
 
     public static int RNG() {
         int rng = 0;
