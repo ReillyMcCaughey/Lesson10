@@ -104,9 +104,9 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btngenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerateActionPerformed
-        System.out.println(nums[1]);
+        /*System.out.println(nums[1]);
         System.out.println(nums[2]);
-        System.out.println(nums[3]);
+        System.out.println(nums[3]);*/
 
         for (int i = 0; i < 50000; i++) {
             numbers.addElement(nums[i]);
