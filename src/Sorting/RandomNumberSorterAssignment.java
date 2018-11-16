@@ -6,15 +6,13 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
 
     DefaultListModel numbers;
     int nums[] = new int[50000];
+    boolean clickable = false;
 
     public RandomNumberSorterAssignment() {
         initComponents();
         numbers = new DefaultListModel();
         //connect to list
         txtoutput.setModel(numbers);
-        //for (int i = 0; i < 50000; i++) { //if you want the generate button to be more of a "SHOW" button
-        //    nums[i] = RNG();
-        //}
     }
 
     @SuppressWarnings("unchecked")
@@ -107,41 +105,78 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btngenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerateActionPerformed
-        /*System.out.println(nums[1]);
-        System.out.println(nums[2]);
-        System.out.println(nums[3]);*/
         numbers.clear();
+        clickable = true;
         for (int i = 0; i < 50000; i++) {
-            nums[i] = RNG(); //Allows pressing of generate button to generate new numbers
+            nums[i] = RNG();
             numbers.addElement(nums[i]);
         }
 
     }//GEN-LAST:event_btngenerateActionPerformed
 
     private void btnbubbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbubbleActionPerformed
-        numbers.clear();
-        bubbleSort(nums);
-        //re-display in list
-        for (int s : nums) {
-            numbers.addElement(s);
+        if (clickable) {
+            numbers.clear();
+            long totalRuntime = 0;
+
+            for (int i = 0; i < 50000; i++) {
+                long startTime = System.currentTimeMillis();
+                bubbleSort(nums);
+                long endTime = System.currentTimeMillis();
+
+                totalRuntime += (endTime - startTime);
+            }
+            for (int s : nums) {
+                numbers.addElement(s);
+            }
+            clickable = false;
+            System.out.println("BubbleSort on average took " + totalRuntime / 100 + " milliseconds");
+        } else {
+            System.out.println("Please generate numbers.");
         }
     }//GEN-LAST:event_btnbubbleActionPerformed
 
     private void btnexchangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexchangeActionPerformed
-        numbers.clear();
-        selectionSort(nums);
-        //re-display in list
-        for (int s : nums) {
-            numbers.addElement(s);
+        if (clickable) {
+            numbers.clear();
+            long totalRuntime = 0;
+
+            for (int i = 0; i < 50000; i++) {
+                long startTime = System.currentTimeMillis();
+                selectionSort(nums);
+                long endTime = System.currentTimeMillis();
+
+                totalRuntime += (endTime - startTime);
+            }
+            for (int s : nums) {
+                numbers.addElement(s);
+            }
+            clickable = false;
+            System.out.println("ExchangeSort on average took " + totalRuntime / 100 + " milliseconds");
+        } else {
+            System.out.println("Please generate numbers.");
         }
     }//GEN-LAST:event_btnexchangeActionPerformed
 
     private void btninsertionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninsertionActionPerformed
-        numbers.clear();
-        insertionSort(nums);
-        //re-display in list
-        for (int s : nums) {
-            numbers.addElement(s);
+        if (clickable) {
+            numbers.clear();
+            long totalRuntime = 0;
+
+            for (int i = 0; i < 50000; i++) {
+                long startTime = System.currentTimeMillis();
+                insertionSort(nums);
+                long endTime = System.currentTimeMillis();
+
+                totalRuntime += (endTime - startTime);
+            }
+            for (int s : nums) {
+                numbers.addElement(s);
+            }
+            clickable = false;
+            System.out.println("InsertionSort on average took " + totalRuntime / 100 + " milliseconds");
+        } else {
+            System.out.println("Please generate numbers.");
         }
     }//GEN-LAST:event_btninsertionActionPerformed
 
@@ -154,13 +189,13 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         for (int s : nums) {
             numbers.addElement(s);
         }
-        */
+         */
     }//GEN-LAST:event_btnquickActionPerformed
 
     public static int RNG() {
         int rng = 0;
         for (int i = 0; i < 50000; i++) {
-            rng = (int)(Math.random() * 50000 + 1);
+            rng = (int) (Math.random() * 50000 + 1);
         }
         return rng;
     }
