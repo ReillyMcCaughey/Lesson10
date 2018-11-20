@@ -23,18 +23,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="205" max="32767" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btngenerate" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnbubble" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnquick" min="-2" max="-2" attributes="0"/>
-                  <Component id="btninsertion" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnexchange" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lbloutput" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane2" pref="205" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btngenerate" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnbubble" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnquick" min="-2" max="-2" attributes="0"/>
+                          <Component id="btninsertion" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnselectionsort" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,14 +57,16 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="btnbubble" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btnexchange" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnselectionsort" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="btninsertion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnquick" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="lbloutput" pref="28" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,12 +88,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbubbleActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnexchange">
+    <Component class="javax.swing.JButton" name="btnselectionsort">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Exchange Sort"/>
+        <Property name="text" type="java.lang.String" value="Selection Sort"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnexchangeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnselectionsortActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btninsertion">
@@ -121,5 +131,7 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="lbloutput">
+    </Component>
   </SubComponents>
 </Form>

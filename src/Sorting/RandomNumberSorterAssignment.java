@@ -21,11 +21,12 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
 
         btngenerate = new javax.swing.JButton();
         btnbubble = new javax.swing.JButton();
-        btnexchange = new javax.swing.JButton();
+        btnselectionsort = new javax.swing.JButton();
         btninsertion = new javax.swing.JButton();
         btnquick = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtoutput = new javax.swing.JList<>();
+        lbloutput = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,10 +44,10 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
             }
         });
 
-        btnexchange.setText("Exchange Sort");
-        btnexchange.addActionListener(new java.awt.event.ActionListener() {
+        btnselectionsort.setText("Selection Sort");
+        btnselectionsort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnexchangeActionPerformed(evt);
+                btnselectionsortActionPerformed(evt);
             }
         });
 
@@ -70,17 +71,22 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btngenerate)
-                    .addComponent(btnbubble)
-                    .addComponent(btnquick)
-                    .addComponent(btninsertion)
-                    .addComponent(btnexchange))
-                .addGap(52, 52, 52))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbloutput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btngenerate)
+                            .addComponent(btnbubble)
+                            .addComponent(btnquick)
+                            .addComponent(btninsertion)
+                            .addComponent(btnselectionsort))
+                        .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,12 +99,14 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(btnbubble)
                         .addGap(35, 35, 35)
-                        .addComponent(btnexchange)
+                        .addComponent(btnselectionsort)
                         .addGap(28, 28, 28)
                         .addComponent(btninsertion)
                         .addGap(30, 30, 30)
                         .addComponent(btnquick)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbloutput, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
         );
 
         pack();
@@ -118,65 +126,53 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         if (clickable) {
             numbers.clear();
             long totalRuntime = 0;
-
-            for (int i = 0; i < 50000; i++) {
-                long startTime = System.currentTimeMillis();
-                bubbleSort(nums);
-                long endTime = System.currentTimeMillis();
-
-                totalRuntime += (endTime - startTime);
-            }
+            long startTime = System.currentTimeMillis();
+            bubbleSort(nums);
+            long endTime = System.currentTimeMillis();
+            totalRuntime = (endTime - startTime);
             for (int s : nums) {
                 numbers.addElement(s);
             }
             clickable = false;
-            System.out.println("BubbleSort on average took " + totalRuntime / 100 + " milliseconds");
+            lbloutput.setText("BubbleSort on average took " + totalRuntime + " milliseconds");
         } else {
-            System.out.println("Please generate numbers.");
+            lbloutput.setText("Please generate new numbers.");
         }
     }//GEN-LAST:event_btnbubbleActionPerformed
 
-    private void btnexchangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexchangeActionPerformed
+    private void btnselectionsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnselectionsortActionPerformed
         if (clickable) {
             numbers.clear();
             long totalRuntime = 0;
-
-            for (int i = 0; i < 50000; i++) {
-                long startTime = System.currentTimeMillis();
-                selectionSort(nums);
-                long endTime = System.currentTimeMillis();
-
-                totalRuntime += (endTime - startTime);
-            }
+            long startTime = System.currentTimeMillis();
+            selectionSort(nums);
+            long endTime = System.currentTimeMillis();
+            totalRuntime = (endTime - startTime);
             for (int s : nums) {
                 numbers.addElement(s);
             }
             clickable = false;
-            System.out.println("ExchangeSort on average took " + totalRuntime / 100 + " milliseconds");
+            lbloutput.setText("SelectionSort on average took " + totalRuntime + " milliseconds");
         } else {
-            System.out.println("Please generate numbers.");
+            lbloutput.setText("Please generate new numbers.");
         }
-    }//GEN-LAST:event_btnexchangeActionPerformed
+    }//GEN-LAST:event_btnselectionsortActionPerformed
 
     private void btninsertionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninsertionActionPerformed
         if (clickable) {
             numbers.clear();
             long totalRuntime = 0;
-
-            for (int i = 0; i < 50000; i++) {
-                long startTime = System.currentTimeMillis();
-                insertionSort(nums);
-                long endTime = System.currentTimeMillis();
-
-                totalRuntime += (endTime - startTime);
-            }
+            long startTime = System.currentTimeMillis();
+            insertionSort(nums);
+            long endTime = System.currentTimeMillis();
+            totalRuntime = (endTime - startTime);
             for (int s : nums) {
                 numbers.addElement(s);
             }
             clickable = false;
-            System.out.println("InsertionSort on average took " + totalRuntime / 100 + " milliseconds");
+            lbloutput.setText("InsertionSort on average took " + totalRuntime + " milliseconds");
         } else {
-            System.out.println("Please generate numbers.");
+            lbloutput.setText("Please generate new numbers.");
         }
     }//GEN-LAST:event_btninsertionActionPerformed
 
@@ -193,10 +189,9 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
     }//GEN-LAST:event_btnquickActionPerformed
 
     public static int RNG() {
-        int rng = 0;
-        for (int i = 0; i < 50000; i++) {
-            rng = (int) (Math.random() * 50000 + 1);
-        }
+
+        int rng = (int) (Math.random() * 50000 + 1);
+
         return rng;
     }
 
@@ -311,11 +306,12 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbubble;
-    private javax.swing.JButton btnexchange;
     private javax.swing.JButton btngenerate;
     private javax.swing.JButton btninsertion;
     private javax.swing.JButton btnquick;
+    private javax.swing.JButton btnselectionsort;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbloutput;
     private javax.swing.JList<String> txtoutput;
     // End of variables declaration//GEN-END:variables
 }
