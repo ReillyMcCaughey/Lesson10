@@ -237,10 +237,16 @@ public class PersonListAssignment extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuclearActionPerformed
 
     private void mnuaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuaddActionPerformed
+        
         String nm = txtname.getText();
         int ag = Integer.parseInt(txtage.getText());
         String gend = buttonGroup1.getSelection().getActionCommand();
         Person temp = new Person(nm, ag, gend);
+        if(people.isEmpty()){
+            people.add(temp);
+            list.addElement(temp.getName());
+            return;
+        }
         int result = search(people, temp);
         if(result >=0){//do nothing
             txtoutput.setText("New person must have a new name.");
