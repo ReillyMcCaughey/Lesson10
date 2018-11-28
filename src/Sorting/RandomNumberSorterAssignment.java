@@ -177,15 +177,21 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
     }//GEN-LAST:event_btninsertionActionPerformed
 
     private void btnquickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquickActionPerformed
-        numbers.clear();
-        numbers.addElement("This button does nothing. Yet.");
-        /*
-        recursiveSort(nums);
-        //re-display in list
-        for (int s : nums) {
-            numbers.addElement(s);
+        if (clickable) {
+            numbers.clear();
+            long totalRuntime = 0;
+            long startTime = System.currentTimeMillis();
+            quickSort(nums, 0, nums.length -1);
+            long endTime = System.currentTimeMillis();
+            totalRuntime = (endTime - startTime);
+            for (int s : nums) {
+                numbers.addElement(s);
+            }
+            clickable = false;
+            lbloutput.setText("InsertionSort on average took " + totalRuntime + " milliseconds");
+        } else {
+            lbloutput.setText("Please generate new numbers.");
         }
-         */
     }//GEN-LAST:event_btnquickActionPerformed
 
     public static int RNG() {
@@ -193,6 +199,28 @@ public class RandomNumberSorterAssignment extends javax.swing.JFrame {
         int rng = (int) (Math.random() * 50000 + 1);
 
         return rng;
+    }
+/////////////////////////////////////////////////////////////////
+    void quickSort (int [] a, int left, int right){
+        if (left >= right) return;
+        
+        int i = left;
+        int j = right;
+        int pivotValue = a[(left+right) / 2];
+        while ( i < j){
+            while (a[i] < pivotValue) i++;
+            while (pivotValue < a[j]) j--;
+            if (i <= j){
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        quickSort (a, left, j);
+        quickSort (a, i, right);
+        
     }
 
 ////////////////////////////////////////////////////////////////
